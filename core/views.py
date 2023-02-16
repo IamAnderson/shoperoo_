@@ -180,4 +180,10 @@ def cart(request):
 	items= Cart.objects.filter(user=request.user)
 	return render(request, 'cart.html', {'items':items})
 
+@login_required
+def remove(request,pk):
+	item = get_object_or_404(Cart, pk=pk)
+	item.delete()
+	return redirect('cart')
+
 
