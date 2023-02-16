@@ -11,19 +11,18 @@ from itertools import chain
 def index(request):
 	item = Item.objects.filter(is_sold=False)[0:6]
 	category = Category.objects.all()
-	if request.user:
-		recommends = History.objects.filter(user=request.user)
-		rec_item=[]
-		for recommend in recommends:
-			items=Item.objects.filter(is_sold=False, category=recommend.item.category).exclude(created_by=request.user)
-			print(recommend.item.created_by)
-			rec_item.append(items)
 	
-		rec_list = list(chain(*rec_item))[0:6]
-		
-		return render(request, 'index.html', {"category":category, "item": item, "rec_item": rec_list})
-	else:
-		return render(request, 'index.html', {"category":category, "item": item,})
+	recommends = History.objects.filter(user=request.user)
+	rec_item=[]
+	for recommend in recommends:
+		items=Item.objects.filter(is_sold=False, category=recommend.item.category).exclude(created_by=request.user)
+		print(recommend.item.created_by)
+		rec_item.append(items)
+
+	rec_list = list(chain(*rec_item))[0:6]
+	
+	return render(request, 'index.html', {"category":category, "item": item, "rec_item": rec_list})
+
 
 
 def detail(request, pk):
