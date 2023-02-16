@@ -184,6 +184,6 @@ def cart(request):
 def remove(request,pk):
 	item = get_object_or_404(Cart, pk=pk, user=request.user)
 	item.delete()
-	return redirect('cart')
+	return redirect('dashboard')
 
 

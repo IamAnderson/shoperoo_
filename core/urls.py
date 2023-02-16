@@ -22,7 +22,7 @@ urlpatterns = [
     path('message/<int:pk>/', views.message, name='message'),
     path('addtocart/<int:pk>/', views.addtocart, name='addtocart'),
     path('new/<int:item_pk>/', views.new_message, name='new_message'),
-    path('<int:pk>/remove/',views.remove, name='remove'),
+    path('<str:pk>/remove/',views.remove, name='remove'),
 ]
 
 if settings.DEBUG:
