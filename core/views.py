@@ -18,11 +18,12 @@ def index(request):
 			print(recommend.item.created_by)
 			rec_item.append(items)
 	
-	rec_list = list(chain(*rec_item))[0:6]
-
-	print(rec_list)
+		rec_list = list(chain(*rec_item))[0:6]
 		
-	return render(request, 'index.html', {"category":category, "item": item, "rec_item": rec_list})
+		return render(request, 'index.html', {"category":category, "item": item, "rec_item": rec_list})
+	else:
+		return render(request, 'index.html', {"category":category, "item": item,})
+
 
 def detail(request, pk):
 	item =get_object_or_404(Item, pk=pk)
