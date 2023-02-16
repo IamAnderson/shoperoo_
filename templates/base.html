@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<script src="https://cdn.tailwindcss.com"></script>
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+
+
+	<title>{%block title%}{%endblock%} | shoperoo</title>
+</head>
+<body>
+	<nav class="py-6 px-6 flex flex-wrap justify-between items-center border-b border-gray-200 max-md:hidden">
+		<a href="/" class="text-xl font-semibold">Shoperoo</a>
+		<div class="space-x-6" style="display: flex; flex-wrap: wrap; margin-top: 10px;">
+			<div style="min-width: 200px;">
+				<a href="{% url 'newitem'%}" style="margin: 10px;" class="text-lg font-semibold hover:text-gray-500">New items</a>
+			<a href="{% url 'browse'%}" style="margin: 10px;" class="text-lg font-semibold hover:text-gray-500">Browse</a>
+			</div>
+			<div style="min-width: 200px;">
+				{%if request.user.is_authenticated%}
+				<a href="{% url 'inbox'%}" style=" background-color: #008080 ;" class="btn btn-secondary mx-1">Indox</a>
+				<a href="{% url 'dashboard'%}"  class="btn btn-secondary mx-1">Dashboard</a>
+				<a href="{% url 'cart'%}" class="btn btn-secondary mx-1">Cart</a>
+
+			{%else%}
+				<a href="{% url 'signup'%}" class="m-8 px-3 py-3 text-lg font-semibold bg-teal-500 text-white rounded-xl hover:bg-teal-700">Sign up</a>
+				<a href="{% url 'login'%}" class="m-8 px-3 py-3 text-lg font-semibold bg-gray-500 text-white rounded-xl hover:bg-gray-700">Log in</a>
+			{%endif%}
+			</div>
+			
+		</div>
+	</nav>
+		<nav class="py-6 px-6 flex flex-wrap justify-between items-center border-b border-gray-200 md:hidden">
+
+		<a href="/" class="text-xl font-semibold">Shoperoo</a> 
+			<button  data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight" aria-controls="offcanvasRight"><svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" class="bi bi-list" viewBox="0 0 16 16">
+			  <path fill-rule="evenodd" d="M2.5 12a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5z"/>
+			</svg></button>
+
+			<div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasRight" aria-labelledby="offcanvasRightLabel">
+			  <div class="offcanvas-header">
+			    <h5 id="offcanvasRightLabel"  class="text-xl font-semibold">Menu</h5>
+			    <button type="button" class="btn-close text-reset text-xl font-semibold" data-bs-dismiss="offcanvas" aria-label="Close"><svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" class="bi bi-x" viewBox="0 0 16 16">
+  <path d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708z"/>
+</svg></button>
+			  </div>
+			  <div class="offcanvas-body">
+			  	<div class="d-flex flex-column bd-highlight mb-3">
+				  <div class="p-2 bd-highlight"><a href="{% url 'newitem'%}" style="margin: 10px;" class="text-lg font-semibold hover:text-gray-500">New items</a></div>
+				  <div class="p-2 bd-highlight"><a href="{% url 'browse'%}" style="margin: 10px;" class="text-lg font-semibold hover:text-gray-500">Browse</a></div>
+				  {%if request.user.is_authenticated%}
+				  <div class="p-2 bd-highlight"><a href="{% url 'inbox'%}" style=" background-color: #008080 ;" class="btn btn-secondary mx-1">Indox</a></div>
+				  <div class="p-2 bd-highlight"><a href="{% url 'dashboard'%}"  class="btn btn-secondary mx-1">Dashboard</a></div>
+				  <div class="p-2 bd-highlight"><a href="{% url 'cart'%}" class="btn btn-secondary mx-1">Cart</a></div>
+				  {%else%}
+				  <div class="p-2 bd-highlight"><a href="{% url 'signup'%}" class="m-8 px-3 py-3 text-lg font-semibold bg-teal-500 text-white rounded-xl hover:bg-teal-700">Sign up</a></div>
+				  <div class="p-2 bd-highlight"><a href="{% url 'login'%}" class="m-8 px-3 py-3 text-lg font-semibold bg-gray-500 text-white rounded-xl hover:bg-gray-700">Log in</a></div>
+				  {%endif%}
+		
+				</div>
+
+			
+		
+			  </div>
+		
+	</nav>
+	<div class="px-6 py-6">
+		{% block content %}
+
+		
+		{% endblock %}
+	</div>
+	<footer class="px-6 py-6 flex flex-wrap justify-between bg-gray-800">
+		<div class="w-2/3 min-w-full pr-10">
+			<h3 class="mb-5 font-semibold text-gray-400">
+				About 	
+			</h3>
+			<p class="text-lg text-gray-500">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+			tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+			quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+			consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+			cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
+			proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+		</div>
+		<div class="w-1/3">
+			<h3 class="mb-5 font-semibold text-gray-400">Menu</h3>
+			<ul class="space-y-2">
+				<li><a href="#" class="text-lg text-teal-500 hover:text-teal-700">About</a></li>
+				<li><a href="{% url 'contact'%}" class="text-lg text-teal-500 hover:text-teal-700">Contacts</a></li>
+				<li><a href="#" class="text-lg text-teal-500 hover:text-teal-700">Privacy</a></li>
+				<li><a href="#" class="text-lg text-teal-500 hover:text-teal-700">Terms of use</a></li>
+				
+				
+			</ul>
+			
+		</div>
+		
+	</footer>
+
+</body>
+</html>

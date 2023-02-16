@@ -1,0 +1,49 @@
+{% extends 'base.html'%}
+{%block title%}{{title}}{%endblock%}
+
+{% block content %}
+<div class="flex justify-between ">
+	<h1 class='mb-6 text-3xl'>welcome {{request.user.username}}</h1>
+	<a href="{% url 'login'%}" class="px-6 py-3 text-lg font-semibold bg-gray-500 text-white rounded-xl hover:bg-gray-700 max-md:hidden">Log Out</a>
+	<a href="{% url 'login'%}" class="mb-2 py-2 px-2 text-lg font-semibold bg-gray-500 text-white rounded-xl hover:bg-gray-700  md:hidden">Log Out</a>
+</div>
+<div class="mt-6 px-6 py-12 bg-gray-100 rounded-xl" >
+	<h2 class="mb-12 text-2xl text-center" > My Items</h2>
+	<div class="grid grid-cols-3 gap-3 max-md:hidden ">
+		{% for i in items%}
+		<div>
+			<a href="{% url 'detail' i.id %}">
+				<div>
+					<img src="{{ i.image.url}}" class="rounded-t-xl object-scale-down h-100 w-300">
+				</div>
+				<div class="p-6 bg-white rounded-b-xl">
+					<h2 class="text-2xl">{{i.name}}</h2>
+					<p class="text-gray-500">Price: {{i.price}}</p>
+
+					
+				</div>
+			</a>
+		</div>
+		{%endfor%}
+
+	</div>
+	<div class="grid grid-cols-2 gap-3 md:hidden">
+		{% for i in items%}
+		<div>
+			<a href="{% url 'detail' i.id %}">
+				<div>
+					<img src="{{ i.image.url}}" class="rounded-t-xl object-scale-down h-100 w-300">
+				</div>
+				<div class="p-6 bg-white rounded-b-xl">
+					<h2 class="text-2xl">{{i.name}}</h2>
+					<p class="text-gray-500">Price: {{i.price}}</p>
+
+					
+				</div>
+			</a>
+		</div>
+		{%endfor%}
+
+	</div>
+</div>
+{% endblock %} 
