@@ -31,30 +31,30 @@
 		
 	</div>
 	<div class="d-flex flex-column bd-highlight mb-3 md:hidden">
-			<div style="margin: 10px;" >
+			<div style="margin: 10px;" class="md:hidden" >
 			<img src="{{item.image.url}}" class="rounded-xl">
-		</div>
-		<div class=" p-3 bg-gray-100 rounded-xl">
-			<h1 class="mb-6 text-3xl">{{item.name}}</h1>
-			<p class="text-gray-500"><strong>Price:</strong>{{item.price}}</p>
-			<p class="text-gray-500"><strong>Seller:</strong>{{item.created_by.username}}</p>
-			{% if item.description%}
-			<p class="text-gray-700"><strong class="text-gray-500">Description:</strong><br>{{item.description}}</p>
-			{%endif%}
-			{%if request.user == item.created_by %}
-				<div class="mt-6 p-6 bg-white  rounded-xl">
-					<p>This is your item</p>
-					<a href="{% url 'edititem' item.id %}" class="inline-block mt-6 px-6 py-3 text-lg font-semibold bg-teal-500 text-white rounded-xl hover:bg-teal-700 ">Edit item</a>
-					<a href="{% url 'delete' item.id %}" class="inline-block mt-6 px-6 py-3 text-lg font-semibold bg-red-500 text-white rounded-xl hover:bg-red-700 ">Delete item</a>
-				</div>
-			{%else%}
-			<a href="{% url 'new_message' item.id %}" class="inline-block mt-6 px-6 py-3 text-lg font-semibold bg-teal-500 text-white rounded-xl hover:bg-teal-700 ">Contact Seller</a>
-			<a href="{% url 'addtocart' item.id %}" class="inline-block mt-6 mx-6 px-6 py-3 text-lg font-semibold bg-teal-500 text-white rounded-xl hover:bg-teal-700 ">Add to Cart</a>
-			{%endif%}
-			{%if message%}
-			<p class="mt-2 py-4 px-8 inline-block bg-red-500 text-lg rounded-xl text-white">{{message}}</p>
-			{%endif%}
-		</div>
+			</div>
+			<div class=" p-3 bg-gray-100 rounded-xl md:hidden">
+				<h1 class="mb-6 text-3xl">{{item.name}}</h1>
+				<p class="text-gray-500"><strong>Price:</strong>{{item.price}}</p>
+				<p class="text-gray-500"><strong>Seller:</strong>{{item.created_by.username}}</p>
+				{% if item.description%}
+				<p class="text-gray-700"><strong class="text-gray-500">Description:</strong><br>{{item.description}}</p>
+				{%endif%}
+				{%if request.user == item.created_by %}
+					<div class="mt-6 p-6 bg-white  rounded-xl">
+						<p>This is your item</p>
+						<a href="{% url 'edititem' item.id %}" class="inline-block mt-6 px-6 py-3 text-lg font-semibold bg-teal-500 text-white rounded-xl hover:bg-teal-700 ">Edit item</a>
+						<a href="{% url 'delete' item.id %}" class="inline-block mt-6 px-6 py-3 text-lg font-semibold bg-red-500 text-white rounded-xl hover:bg-red-700 ">Delete item</a>
+					</div>
+				{%else%}
+				<a href="{% url 'new_message' item.id %}" class="inline-block mt-6 px-6 py-3 text-lg font-semibold bg-teal-500 text-white rounded-xl hover:bg-teal-700 ">Contact Seller</a>
+				<a href="{% url 'addtocart' item.id %}" class="inline-block mt-6 mx-6 px-6 py-3 text-lg font-semibold bg-teal-500 text-white rounded-xl hover:bg-teal-700 ">Add to Cart</a>
+				{%endif%}
+				{%if message%}
+				<p class="mt-2 py-4 px-8 inline-block bg-red-500 text-lg rounded-xl text-white">{{message}}</p>
+				{%endif%}
+			</div>
 	</div>
 	<div class="mt-6 px-6 py-12 bg-gray-100 rounded-xl" >
 	<h2 class="mb-12 text-2xl text-center" > Related items</h2>
