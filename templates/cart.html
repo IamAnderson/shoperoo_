@@ -11,7 +11,7 @@
             <img class="object-contain h-48 w-48 rounded-xl" src="{{item.item.image.url}}">
             <p class="text-2xl mx-6">Item: {{item.item.name}}</p>
             <p class="text-2xl mx-6">Price: {{item.item.price}}</p>
-            <button class="btn btn-danger"><a href="{% url 'remove' item.item.id %}">Remove</a></button>
+            <a href="{% url 'remove' item.item.id %}" class="btn btn-danger">Remove</a>
         </div>
     
     </div>
