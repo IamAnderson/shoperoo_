@@ -1,1 +1,1 @@
-web: gunicorn friendproject.wsgi
+web: gunicorn Shoperoo.wsgi
