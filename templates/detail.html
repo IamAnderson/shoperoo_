@@ -58,7 +58,25 @@
 		</div>
 	<div class="mt-6 px-6 py-12 bg-gray-100 rounded-xl" >
 	<h2 class="mb-12 text-2xl text-center" > Related items</h2>
-	<div class="grid grid-cols-3 gap-3 ">
+	<div class="grid grid-cols-3 gap-3 max-md:hidden">
+		{% for i in related_items%}
+		<div>
+			<a href="{% url 'detail' i.id %}">
+				<div>
+					<img src="{{ i.image.url}}" class="rounded-t-xl object-scale-down h-100 w-300">
+				</div>
+				<div class="p-6 bg-white rounded-b-xl">
+					<h2 class="text-2xl">{{i.name}}</h2>
+					<p class="text-gray-500">Price: {{i.price}}</p>
+
+					
+				</div>
+			</a>
+		</div>
+		{%endfor%}
+
+	</div>
+	<div class="grid grid-cols-3 gap-3 md:hidden">
 		{% for i in related_items%}
 		<div>
 			<a href="{% url 'detail' i.id %}">
