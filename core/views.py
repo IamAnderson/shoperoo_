@@ -7,6 +7,7 @@ from itertools import chain
 
 
 # Create your views here.
+@login_required
 def index(request):
 	item = Item.objects.filter(is_sold=False)[0:6]
 	category = Category.objects.all()
