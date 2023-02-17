@@ -172,6 +172,8 @@ def addtocart(request, pk):
 		new_item= Cart.objects.create(user=request.user, item=item)
 		add_history= History.create(user=request.user, item=item)
 		new_item.save()
+                add_history.save()
+
 	related_items = Item.objects.filter(category=item.category, is_sold=False).exclude(pk=pk)[0:3]
 	return render(request, 'detail.html', {'item':item, 'related_items': related_items, 'message':message})
 
