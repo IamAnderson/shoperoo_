@@ -170,7 +170,8 @@ def addtocart(request, pk):
 		message = 'already in cart'
 	else:
 		new_item= Cart.objects.create(user=request.user, item=item)
-		add_history= History.create(user=request.user, item=item)
+		add_history= History.objects.create(user=request.user, item=item)
+		print(add_history)
 		new_item.save()
 		add_history.save()
 
