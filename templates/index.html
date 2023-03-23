@@ -14,8 +14,6 @@
 				<div class="p-6 bg-white rounded-b-xl">
 					<h2 class="text-2xl">{{i.name}}</h2>
 					<p class="text-gray-500">Price: {{i.price}}</p>
-
-					
 				</div>
 			</a>
 		</div>
@@ -32,9 +30,7 @@
 				</div>
 				<div class="p-6 bg-white rounded-b-xl">
 					<h2 class="text-2xl">{{i.name}}</h2>
-					<p class="text-gray-500">Price: {{i.price}}</p>
-
-					
+					<p class="text-gray-500">Price: {{i.price}}</p>					
 				</div>
 			</a>
 		</div>
@@ -53,9 +49,7 @@
 				</div>
 				<div class="p-6 bg-white rounded-b-xl">
 					<h2 class="text-2xl">{{i.name}}</h2>
-					<p class="text-gray-500">Price: {{i.price}}</p>
-
-					
+					<p class="text-gray-500">Price: {{i.price}}</p>				
 				</div>
 			</a>
 		</div>
@@ -71,9 +65,7 @@
 				</div>
 				<div class="p-6 bg-white rounded-b-xl">
 					<h2 class="text-2xl">{{i.name}}</h2>
-					<p class="text-gray-500">Price: {{i.price}}</p>
-
-					
+					<p class="text-gray-500">Price: {{i.price}}</p>	
 				</div>
 			</a>
 		</div>
@@ -81,31 +73,5 @@
 
 	</div>
 </div>
-<div class="mt-6 px-6 py-12 bg-gray-100 rounded-xl" >
-	<h2 class="mb-12 text-2xl text-center" > Categories</h2>
-	<div class="grid grid-cols-3 gap-3 max-md:hidden">
-		{%for cat in category%}
-		<div>
-			<a href="#">
-				<div class="p-6 bg-white rounded-b-xl min-w-full">
-					<h2 class="text-2xl">{{cat.name}}</h2>
-					<p class="text-gray-500">Price: {{ cat.items.count }} items</p>	
-				</div>
-			</a>
-		</div>
-		{%endfor%}
-	</div>
-	<div class="grid grid-cols-1 gap-3  md:hidden">
-		{%for cat in category%}
-		<div>
-			<a href="#">
-				<div class="p-6 bg-white rounded-b-xl min-w-full">
-					<h2 class="text-2xl">{{cat.name}}</h2>
-					<p class="text-gray-500">Price: {{ cat.items.count }} items</p>	
-				</div>
-			</a>
-		</div>
-		{%endfor%}
-	</div>
-</div>
+
 {% endblock %} 

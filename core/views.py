@@ -9,25 +9,25 @@ from itertools import chain
 # Create your views here.
 @login_required
 def index(request):
-	item = Item.objects.filter(is_sold=False)[0:6]
+	item = Item.objects.filter(is_sold=False).order_by('-created_at')[0:6]
 	category = Category.objects.all()
 	
 	recommends = History.objects.filter(user=request.user)
 	rec_item=[]
 	for recommend in recommends:
-		items=Item.objects.filter(is_sold=False, category=recommend.item.category).exclude(created_by=request.user)
+		items=Item.objects.filter(is_sold=False, category=recommend.item.category).exclude(created_by=request.user).order_by('-created_at')
 		print(recommend.item.created_by)
 		rec_item.append(items)
 
 	rec_list = list(chain(*rec_item))[0:6]
-	
+	print(item)
 	return render(request, 'index.html', {"category":category, "item": item, "rec_item": rec_list})
 
 
 
 def detail(request, pk):
 	item =get_object_or_404(Item, pk=pk)
-	related_items = Item.objects.filter(category=item.category, is_sold=False).exclude(pk=pk)[0:3]
+	related_items = Item.objects.filter(category=item.category, is_sold=False).exclude(pk=pk).order_by('-created_at')[0:3]
 	return render(request, 'detail.html', {'item':item, 'related_items': related_items})
 
 
@@ -64,7 +64,7 @@ def newitem(request):
 
 @login_required
 def dashboard(request):
-	items = Item.objects.filter(created_by=request.user)
+	items = Item.objects.filter(created_by=request.user).reverse()
 	return render(request, "dashboard.html", {'items':items, 'title': "Dashboard"})
 
 
@@ -92,7 +92,7 @@ def browse(request):
 	query = request.GET.get('query', '')
 	category_id = request.GET.get('category',0)
 	categories = Category.objects.all()
-	items = Item.objects.filter(is_sold=False)
+	items = Item.objects.filter(is_sold=False).order_by('-created_at')
 	if category_id:
 		items = items.filter(category_id = category_id)
 	if query:
@@ -175,12 +175,12 @@ def addtocart(request, pk):
 		new_item.save()
 		add_history.save()
 
-	related_items = Item.objects.filter(category=item.category, is_sold=False).exclude(pk=pk)[0:3]
+	related_items = Item.objects.filter(category=item.category, is_sold=False).order_by('-created_at')
 	return render(request, 'detail.html', {'item':item, 'related_items': related_items, 'message':message})
 
 @login_required
 def cart(request):
-	items= Cart.objects.filter(user=request.user)
+	items= Cart.objects.filter(user=request.user).order_by('-created_at')
 	return render(request, 'cart.html', {'items':items})
 
 @login_required
