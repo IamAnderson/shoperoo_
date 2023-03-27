@@ -19,7 +19,7 @@ def index(request):
 		print(recommend.item.created_by)
 		rec_item.append(items)
 
-	rec_list = list(chain(*rec_item))[0:6]
+	rec_list = list(chain(*rec_item))
 	print(item)
 	return render(request, 'index.html', {"category":category, "item": item, "rec_item": rec_list})
 
@@ -180,7 +180,7 @@ def addtocart(request, pk):
 
 @login_required
 def cart(request):
-	items= Cart.objects.filter(user=request.user).order_by('-created_at')
+	items= Cart.objects.filter(user=request.user)
 	return render(request, 'cart.html', {'items':items})
 
 @login_required
