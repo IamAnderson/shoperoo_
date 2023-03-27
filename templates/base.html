@@ -51,7 +51,7 @@
 				  <div class="p-2 bd-highlight"><a href="{% url 'newitem'%}" style="margin: 10px;" class="text-lg font-semibold hover:text-gray-500">New items</a></div>
 				  <div class="p-2 bd-highlight"><a href="{% url 'browse'%}" style="margin: 10px;" class="text-lg font-semibold hover:text-gray-500">Browse</a></div>
 				  {%if request.user.is_authenticated%}
-				  <div class="p-2 bd-highlight"><a href="{% url 'inbox'%}" style=" background-color: #008080 ;" class="btn btn-secondary mx-1">Indox</a></div>
+				  <div class="p-2 bd-highlight"><a href="{% url 'inbox'%}" style=" background-color: #008080 ;" class="btn btn-secondary mx-1">Inbox</a></div>
 				  <div class="p-2 bd-highlight"><a href="{% url 'dashboard'%}"  class="btn btn-secondary mx-1">Dashboard</a></div>
 				  <div class="p-2 bd-highlight"><a href="{% url 'cart'%}" class="btn btn-secondary mx-1">Cart</a></div>
 				  {%else%}
